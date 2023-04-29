@@ -43,6 +43,11 @@ def get_matched_features(matches,kp1,kp2,n_features):
     
     return matched_kp1, matched_kp2, matched_kp1_pt, matched_kp2_pt
 
+def get_intrinsic(args):
+    if (args.live):
+        return np.array([[605.876708984375, 0, 324.34292602539062] ,[0, 605.7498779296875, 236.2529296875], [0, 0, 1.0]]) 
+    else:
+        return np.array([[9.591977e+02, 0.000000e+00, 6.944383e+02] ,[0.000000e+00, 9.529324e+02, 2.416793e+02], [0.000000e+00, 0.000000e+00, 1.000000e+00]]) 
 
 def reprojection_error(params, pts_3d, pts_2d, K):
     
