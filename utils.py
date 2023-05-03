@@ -47,7 +47,7 @@ def get_intrinsic(args):
     if (args.live):
         return np.array([[605.876708984375, 0, 324.34292602539062] ,[0, 605.7498779296875, 236.2529296875], [0, 0, 1.0]]) 
     else:
-        return np.array([[9.591977e+02, 0.000000e+00, 6.944383e+02] ,[0.000000e+00, 9.529324e+02, 2.416793e+02], [0.000000e+00, 0.000000e+00, 1.000000e+00]]) 
+        return np.array([[ 707.0912, 0., 601.8873], [0., 707.0912, 183.1104],[ 0., 0.,1.]])
 
 def reprojection_error(params, pts_3d, pts_2d, K):
     
@@ -143,9 +143,27 @@ def bundleAdjustment(K1, M1, p1, K2, M2_init, p2, P_init):
 
 
 
-# Code to extract ground truth from txt file or any other file
+# Code to extract ground truth from txt file
 def Read_gt_odom():
-    pass
+    # pass
+    file1 = open('gt.txt', 'r')
+    Lines = file1.readlines()
+    list_x=[]
+    list_y=[]
+    list_z=[]
+    count = 0
+    for line in Lines:
+        count += 1
+        param=[float(x) for x in line.split()]
+        list_x.append(param[3])
+        list_y.append(param[7])
+        list_z.append(param[11])
+    array_x=np.asarray(list_x)
+    array_y=np.asarray(list_y)
+    array_z=np.asarray(list_z)
+    gt=np.stack((array_x,array_y,array_z),axis=1)
+    
+    return gt
 
 
 def calculate_gt_error(pt1, pt2):

@@ -10,7 +10,7 @@ The Realsense D435i was caliberated using the method mentioned in the following 
 
 https://github.com/Zhefan-Xu/camera-imu-calibration-guide
 
-The example sequence used from KITTI Dataset used: 2011_09_30/2011_09_30_drive_0027_sync/image_02/data/
+The example sequence used from KITTI Dataset used: 2011_09_30/2011_09_30_drive_0027_sync/image_00/data/
 
 
 ## Implementation

@@ -29,7 +29,7 @@ def main(args):
     
     is_orb = (args.feature_extractor == 'orb')
     if (is_orb):
-        orb = cv2.ORB_create(nfeatures=200,scaleFactor=1.2,nlevels=8, edgeThreshold=31, firstLevel=0, WTA_K=2, scoreType=cv2.ORB_HARRIS_SCORE, patchSize=31, fastThreshold=20)
+        orb = cv2.ORB_create(nfeatures=600,scaleFactor=1.2,nlevels=8, edgeThreshold=61, firstLevel=0, WTA_K=2, scoreType=0, patchSize=31, fastThreshold=10)
         bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
     else:
         sift = cv2.SIFT_create(contrastThreshold=0.022)
@@ -138,10 +138,12 @@ def main(args):
     cv2.destroyAllWindows() 
      
     trajectory = np.array(trajectory)
+    # print(trajectory.shape)
+    np.savetxt('trajectory.txt', trajectory.squeeze(), delimiter=',', fmt='%4f')
     plt.plot(trajectory[:,0],trajectory[:,2])
     if is_gt: 
-        plt.plot(gt[:n,0],gt[:n,2])
-        # plt.legend(['Odometry','Ground Truth'])
+        plt.plot(gt[:index,0],gt[:index,2])
+        plt.legend(['Odometry','Ground Truth'])
     else: plt.legend(['Odometry'])
     end = time.time()
     print("Time:", end- start)
@@ -232,6 +234,7 @@ def live(args):
     cv2.destroyAllWindows()
     
     trajectory = np.array(trajectory)
+    np.savetxt('trajectory.txt', trajectory, delimiter=',', fmt='%4f')
     print(trajectory)
     plt.plot(trajectory[:,0],trajectory[:,2])
     plt.plot(trajectory[:,0],trajectory[:,1])
