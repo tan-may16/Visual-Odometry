@@ -33,14 +33,6 @@ python main.py --feature_extractor sift --data_path images/
 
 In the absence of Bundle Adjustment, there appears to be a notable drift in the observed odometry over time. However, the code is capable of identifying accurate local transformations. Notably, SIFT features exhibit superior performance in terms of accuracy, although they are associated with a lengthy computational time, taking approximately five minutes to process a single sequence. Conversely, ORB features offer significantly faster results, completing the same sequence in approximately 42 seconds. However, the downside to this faster processing is that it tends to produce slightly noisier and incorrect local transformation odometry measurements.
 
-* **KITTI Odometry with ORB features without scaling**
-
-<img src="media/Odom_orb_without_correction.png" width="400"/>
-
-* **KITTI Odometry with ORB features with scale correction**
-
-<img src="media/Odom_orb_with_gt_correction.png" width="400"/>
-
 * **KITTI Odometry with SIFT features without scaling**
 
 <img src="media/Odom_sift_without_correction.png" width="400"/>
@@ -48,6 +40,14 @@ In the absence of Bundle Adjustment, there appears to be a notable drift in the 
 * **KITTI Odometry with SIFT features with gt scaling**
 
 <img src="media/Odom_sift_with_gt_correction.png" width="400"/>
+
+* **KITTI Odometry with ORB features without scaling**
+
+<img src="media/Odom_orb_without_correction.png" width="400"/>
+
+* **KITTI Odometry with ORB features with scale correction**
+
+<img src="media/Odom_orb_with_gt_correction.png" width="400"/>
 
 
 
